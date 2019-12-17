@@ -18,7 +18,7 @@
             href="#"
             id="help1"
             class=""
-            onclick="if(checkHits(1)){helpFifty()}"
+            onclick="if(checkHits(1)){helpFifty()};this.className = `help_inactive`;"
           ></a>
         </div>
         <div class="icon_2">
@@ -26,7 +26,7 @@
             href="#"
             id="help2"
             class=""
-            onclick="if(checkHits(2)){helpHall()}"
+            onclick="if(checkHits(2)){helpHall()}this.className = `help_inactive`;"
           ></a>
         </div>
         <div class="icon_3">
@@ -34,7 +34,7 @@
             href="#"
             id="help3"
             class=""
-            onclick="if(checkHits(3)){sessionStorage.setItem(`try`,2);}"
+            onclick="if(checkHits(3)){sessionStorage.setItem(`try`,2);}this.className = `help_inactive`;"
           ></a>
         </div>
         <div class="icon_4">
@@ -42,7 +42,7 @@
             href="#"
             id="help4"
             class=""
-            onclick="if(checkHits(4)){ helpFriend()}"
+            onclick="if(checkHits(4)){ helpFriend()}this.className = `help_inactive`;"
           ></a>
         </div>
       </div>
