@@ -1,3 +1,7 @@
+.menu {
+  width: 1000px;
+  margin: 10px auto;
+}
 .question {
   background: url(Images/question_bg.gif) left top no-repeat;
   width: 1000px;
@@ -11,6 +15,15 @@
 .question p {
   padding-top: 20px;
   margin: 0 200px 0 200px;
+}
+.ans_1 a:hover,
+.ans_2 a:hover {
+  background: url(Images/anwser_hover_bg.jpg) left top no-repeat;
+  color: #000;
+}
+.ans_right {
+  background: url(Images/anwser_right_bg.jpg) left top no-repeat;
+  color: #000;
 }
 .ans_1 a,
 .ans_2 a {
@@ -53,6 +66,10 @@
   overflow: hidden;
   font-size: 0px;
 }
+.question_list {
+  margin: -60px 0 0 760px;
+  height: 480px;
+}
 .question_list li {
   line-height: 120%;
   margin-bottom: 9px;
@@ -81,6 +98,12 @@
   height: 19px;
   padding-top: 1px;
 }
+div [class^="icon_"] {
+  width: 80px;
+  height: 60px;
+  margin-top: 6px;
+  display: table-cell;
+}
 div [class^="icon_"] a {
   width: 80px;
   height: 60px;
@@ -88,7 +111,6 @@ div [class^="icon_"] a {
   display: inline-block;
 }
 .help {
-  display: inline-block;
   margin-top: -10px;
   text-align: center;
 }
@@ -112,17 +134,18 @@ body {
   background: black;
 }
 .main {
-  background: url(Images/background_logo.jpg) center 200px no-repeat;
+  background: url(Images/background_logo.jpg) center no-repeat;
   width: 1000px;
   margin: 10px auto;
+  top: 0;
   text-align: left;
+  position: relative;
 }
 * {
   margin: 0;
   padding: 0;
 }
 .millioners {
-  position: absolute;
   width: 160px;
   height: 600px;
   top: 125px;
