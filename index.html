@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Кто хочет стать миллионером?</title>
+  </head>
+
+  <body
+    onload="onload1();sessionStorage.setItem(`usedHelp`,JSON.stringify([0,0,0,0]));"
+  >
+    <div class="main">
+      <div id="help">
+        <div class="icon_1">
+          <a
+            href="#"
+            id="help1"
+            class=""
+            onclick="if(checkHits(1)){helpFifty()}"
+          ></a>
+        </div>
+        <div class="icon_2">
+          <a
+            href="#"
+            id="help2"
+            class=""
+            onclick="if(checkHits(2)){helpHall()}"
+          ></a>
+        </div>
+        <div class="icon_3">
+          <a
+            href="#"
+            id="help3"
+            class=""
+            onclick="if(checkHits(3)){sessionStorage.setItem(`try`,2);}"
+          ></a>
+        </div>
+        <div class="icon_4">
+          <a
+            href="#"
+            id="help4"
+            class=""
+            onclick="if(checkHits(4)){ helpFriend()}"
+          ></a>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+      <div class="question_list">
+        <ul>
+          <li class="fire">
+            <span class="num">15</span
+            ><span class="money"><b>1 000 000</b></span>
+          </li>
+          <li>
+            <span class="num">14</span><span class="money"><b>500 000</b></span>
+          </li>
+          <li>
+            <span class="num">13</span><span class="money"><b>250 000</b></span>
+          </li>
+          <li>
+            <span class="num">12</span><span class="money"><b>125 000</b></span>
+          </li>
+          <li>
+            <span class="num">11</span><span class="money"><b>64 000</b></span>
+          </li>
+          <li class="fire">
+            <span class="num">10</span><span class="money"><b>32 000</b></span>
+          </li>
+          <li>
+            <span class="num">9</span><span class="money"><b>16 000</b></span>
+          </li>
+          <li>
+            <span class="num">8</span><span class="money"><b>8 000</b></span>
+          </li>
+          <li>
+            <span class="num">7</span><span class="money"><b>4 000</b></span>
+          </li>
+          <li>
+            <span class="num">6</span><span class="money"><b>2 000</b></span>
+          </li>
+          <li class="fire">
+            <span class="num">5</span><span class="money"><b>1 000</b></span>
+          </li>
+          <li>
+            <span class="num">4</span><span class="money"><b>500</b></span>
+          </li>
+          <li>
+            <span class="num">3</span><span class="money"><b>300</b></span>
+          </li>
+          <li>
+            <span class="num">2</span><span class="money"><b>200</b></span>
+          </li>
+          <li class="org_bg">
+            <span class="num">1</span><span class="money"><b>100</b></span>
+          </li>
+        </ul>
+      </div>
+      <div align="center"></div>
+      <div id="question_answer">
+        <div class="question">
+          <p id="question">
+            Вопрос
+          </p>
+        </div>
+        <div class="top_ans">
+          <div class="ans_1">
+            <a href="#" id="a" class="answer" onclick="checkAnswer(1)"
+              ><span>A:</span> Ответ 1</a
+            >
+          </div>
+          <div class="ans_2">
+            <a href="#" id="b" class="answer" onclick="checkAnswer(2)"
+              ><span>B:</span> Ответ 2
+            </a>
+          </div>
+          <div class=" clear"></div>
+        </div>
+        <div class="bot_ans">
+          <div class="ans_1">
+            <a href="#" id="c" class="answer" onclick="checkAnswer(3)"
+              ><span>C:</span> Ответ 3</a
+            >
+          </div>
+          <div class=" ans_2">
+            <a href="#" id="d" class="answer" onclick="checkAnswer(4)"
+              ><span>D:</span> Ответ 4</a
+            >
+          </div>
+          <div class=" clear"></div>
+        </div>
+      </div>
+      <div id="form" style="display:none;"></div>
+    </div>
+    <script>
+      let sum_pointer = 14; //Количество вопросов;
+      let question = {
+        "1": [
+          "Как называют жесткий компьютерный диск?",
+          `Этот компьютерный знак в Чехии называют – "селедкой", в Италии – "улиткой", а на иврите – "плюшкой". А как в России?`,
+          "Какая клавиша есть на клавиатуре компьютера?",
+          "Кто такая Арина Радионовна?",
+          "Какую позицию на поле называют `голкипер`?",
+        ],
+        "2": [
+          "Сколько байт в 1 килобайте?",
+          "В какую из этих игр играют не клюшкой?",
+          "С какой из этих стран Чехия не граничит?",
+          `У кого из "вампиров" кровь пьют только самки?`,
+          "Кем по образованию был Антон Павлович Чехов?",
+        ],
+        "3": [
+          "Как называется комедия В. В. Маяковского?",
+          "Какая из этих рек впадает в Азовское море?",
+          "Какой химический элемент был назван в честь злого подземного гнома?",
+          "Что в народе называют заячьей картошкой?",
+          "Как называется детеныш норки?",
+          "Какая планета совершает 1 оборот вокруг солнца со скоростью 47,9 км/с?",
+        ],
+        "4": [
+          "В каком городе находится штаб-квартира Microsoft?",
+          "Когда появился первый компьютер?",
+          "Кто считается основоположником кубизма?",
+          "В какое море впадает Жёлтая река?",
+          "В какой пьесе А.П. Чехова герой обращался к шкафу с эпитетом `многоуважаемый`?",
+        ],
+        "5": [
+          "У автомобилей какой из этих стран международный регистрационный знак DZ?",
+          "Кто получил первую Нобелевскую премию по литературе?",
+          "Как назвали первую кимберлитовую трубку, открытую Ларисой Попугаевой 21 августа 1954 года?",
+          "Из произведений какого писателя физики заимствовали слово `кварк`?",
+        ],
+      };
+
+      let correctAnswer = {
+        "1": ["Винчестер", "Собака", "Пробел", "Няня Пушкина", "Вратарь"],
+        "2": ["1024", "Бильярд", "Венгрия", "Комары", "Врач"],
+        "3": ["Клоп", "Дон", "Кобальт", "Гриб дождевик", "Щенок", "Меркурий"],
+        "4": ["Редмонд", "В 1938", "П. Пикассо", "Жёлтое море", "Вишневый сад"],
+        "5": ["Алжир", "Поэт", "Зарница", "Джеймс Джойс"],
+      };
+
+      let wrongAnswer = {
+        "1": [
+          ["Револьвер", "Ящик", "ЦП"],
+          ["Кошка", "Обезьяна", "Улитка"],
+          ["Протокол", "Просвет", "Прострел"],
+          ["Певица 80-х", "Актрисса 90-х", "Мать-героиня"],
+          ["Защитник", "Полузащитник", "Нападающий"],
+        ],
+        "2": [
+          [512, 8, 64],
+          ["Хоккей", "Гольф", "Поло"],
+          ["Германия", "Австрия", "Польша"],
+          ["Летучие мыши", "Пиявки", "Клещи"],
+          ["Юрист", "Учитель", "Дипломат"],
+        ],
+        "3": [
+          ["Пена", "Жук", "Паук"],
+          ["Днестр", "Южный Буг", "Днепр"],
+          ["Гафний", "Бериллий", "Теллур"],
+          ["Морковь", "Капусту", "Кору деревьев"],
+          ["Котенок", "Белек", "Норик"],
+          ["Марс", "Юпитер", "Сатурн"],
+        ],
+        "4": [
+          ["Женева", "Лион", "Мюнхен"],
+          ["В 1958", "В 1948", "В 1968"],
+          ["В. Кандинский", "Ф. Леже", "К. Малевич"],
+          ["Ионическое море", "Чёрное море", "Каспийское море"],
+          ["Три сестры", "Чайка", "Дядя Ваня"],
+        ],
+        "5": [
+          ["Белиз", "Бенин", "Замбия"],
+          ["Романист", "Драматург", "Эссеист"],
+          ["Удачная", "Мир", "Советская"],
+          ["Льюис Кэррол", "Уильям Теккерей", "Уильям Фолкнер"],
+        ],
+      };
+
+      function onload1(question = 1) {
+        sessionStorage.setItem("questionN", question);
+        step();
+      }
+      function step() {
+        let questionNumber = sessionStorage.getItem("questionN");
+        sessionStorage.setItem("questionLevel", getLevel(questionNumber));
+        let questionLevel = sessionStorage.getItem("questionLevel");
+        let questionRandom = Math.floor(
+          question[questionLevel].length * Math.random(),
+        );
+        sessionStorage.setItem("questionR", questionRandom);
+        sessionStorage.setItem("try", 1);
+        sessionStorage.setItem("options", JSON.stringify([0, 0, 0, 0]));
+        document.getElementById("question").innerHTML =
+          question[questionLevel][questionRandom];
+        version(
+          correctAnswer[questionLevel][questionRandom],
+          wrongAnswer[questionLevel][questionRandom],
+        );
+      }
+
+      function getLevel(n) {
+        if (n <= 3) return 1;
+        if (n <= 6) return 2;
+        if (n <= 9) return 3;
+        if (n <= 12) return 4;
+        if (n <= 15) return 5;
+      }
+      function version(correct, wrongArr) {
+        let check = 0;
+        let correctNumb = Math.floor(Math.random() * 4) + 1;
+        sessionStorage.setItem("correct", correctNumb);
+        if (correctNumb == 1) {
+          document.getElementById("a").innerHTML = "A: " + correct;
+        } else {
+          document.getElementById("a").innerHTML = "A: " + wrongArr[check];
+          check++;
+        }
+        if (correctNumb == 2) {
+          document.getElementById("b").innerHTML = "B: " + correct;
+        } else {
+          document.getElementById("b").innerHTML = "B: " + wrongArr[check];
+          check++;
+        }
+        if (correctNumb == 3) {
+          document.getElementById("c").innerHTML = "C: " + correct;
+        } else {
+          document.getElementById("c").innerHTML = "C: " + wrongArr[check];
+          check++;
+        }
+        if (correctNumb == 4) {
+          document.getElementById("d").innerHTML = "D: " + correct;
+        } else {
+          document.getElementById("d").innerHTML = "D: " + wrongArr[check];
+        }
+      }
+      function helpFifty() {
+        let check = 0;
+        let del;
+        let delArr = [];
+        while (check != 2) {
+          del = Math.floor(Math.random() * 4) + 1;
+          if (
+            del != sessionStorage.getItem("correct") &&
+            delArr.indexOf(del) == -1
+          ) {
+            let arrJSON = JSON.parse(sessionStorage.getItem("options"));
+            check++;
+            delArr.push(del);
+            if (del == 1) {
+              document.getElementById("a").innerHTML = "";
+              arrJSON[0] = -1;
+            }
+            if (del == 2) {
+              document.getElementById("b").innerHTML = "";
+              arrJSON[1] = -1;
+            }
+            if (del == 3) {
+              document.getElementById("c").innerHTML = "";
+              arrJSON[2] = -1;
+            }
+            if (del == 4) {
+              document.getElementById("d").innerHTML = "";
+              arrJSON[3] = -1;
+            }
+            sessionStorage.setItem("options", JSON.stringify(arrJSON));
+          }
+        }
+      }
+      function helpFriend() {
+        let arr = JSON.parse(sessionStorage.getItem("options"));
+        let sum = 0;
+        if (sessionStorage.getItem("questionLevel") == 1)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            60,
+            100,
+          );
+        if (sessionStorage.getItem("questionLevel") == 2)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            50,
+            90,
+          );
+        if (sessionStorage.getItem("questionLevel") == 3)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            40,
+            60,
+          );
+        if (sessionStorage.getItem("questionLevel") == 4)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            20,
+            50,
+          );
+        if (sessionStorage.getItem("questionLevel") == 5)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            10,
+            30,
+          );
+        sum += arr[Number(sessionStorage.getItem("correct")) - 1];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] != 0) continue;
+          if (arr.indexOf(0, i + 1) == -1) {
+            arr[i] = 100 - sum;
+            break;
+          } else {
+            arr[i] = randomInteger(0, 100 - sum);
+            sum += arr[i];
+          }
+        }
+        let obj = {
+          "1": "A",
+          "2": "B",
+          "3": "C",
+          "4": "D",
+        };
+        let friend = obj[Number(arr.indexOf(Math.max(...arr))) + 1];
+        alert(`Хмм,вопрос очень сложный...Ааа...Мне кажется это-"${friend}"`);
+      }
+      function helpHall() {
+        let arr = JSON.parse(sessionStorage.getItem("options"));
+        let sum = 0;
+        if (sessionStorage.getItem("questionLevel") == 1)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            60,
+            100,
+          );
+        if (sessionStorage.getItem("questionLevel") == 2)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            50,
+            90,
+          );
+        if (sessionStorage.getItem("questionLevel") == 3)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            40,
+            60,
+          );
+        if (sessionStorage.getItem("questionLevel") == 4)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            20,
+            50,
+          );
+        if (sessionStorage.getItem("questionLevel") == 5)
+          arr[Number(sessionStorage.getItem("correct")) - 1] = randomInteger(
+            10,
+            30,
+          );
+        sum += arr[Number(sessionStorage.getItem("correct")) - 1];
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] != 0) continue;
+          if (arr.indexOf(0, i + 1) == -1) {
+            arr[i] = 100 - sum;
+            break;
+          } else {
+            arr[i] = randomInteger(0, 100 - sum);
+            sum += arr[i];
+          }
+        }
+        let out = "Зал считает,что:" + "\n";
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] != -1) {
+            if (i == 0) out += "A: ";
+            if (i == 1) out += "B: ";
+            if (i == 2) out += "C: ";
+            if (i == 3) out += "D: ";
+            out += arr[i] + "\n";
+          }
+        }
+        alert(out);
+      }
+      function randomInteger(min, max) {
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rand);
+      }
+
+      function checkAnswer(userAnswer) {
+        setTimeout(function() {
+          if (userAnswer == sessionStorage.getItem("correct")) {
+            if (sessionStorage.getItem("questionN") < 15) {
+              question[sessionStorage.getItem("questionLevel")].splice(
+                sessionStorage.getItem("questionR"),
+                1,
+              );
+              console.log(
+                correctAnswer[sessionStorage.getItem("questionLevel")],
+              );
+              correctAnswer[sessionStorage.getItem("questionLevel")].splice(
+                sessionStorage.getItem("questionR"),
+                1,
+              );
+              console.log(
+                correctAnswer[sessionStorage.getItem("questionLevel")],
+              );
+
+              console.log(wrongAnswer[sessionStorage.getItem("questionLevel")]);
+              wrongAnswer[sessionStorage.getItem("questionLevel")].splice(
+                sessionStorage.getItem("questionR"),
+                1,
+              );
+              console.log(wrongAnswer[sessionStorage.getItem("questionLevel")]);
+
+              onload1(Number(sessionStorage.getItem("questionN")) + 1);
+
+              document.getElementsByTagName("li")[sum_pointer].className = "";
+              sum_pointer--;
+              document.getElementsByTagName("li")[sum_pointer].className =
+                "org_bg";
+            } else {
+              alert(
+                "Вау!!!Вы просто гений!Вы выиграли 1,000,000!!!!Поздравляем!",
+              );
+              window.location.reload();
+            }
+          } else if (sessionStorage.getItem("try") == 2) {
+            let arrJSON = JSON.parse(sessionStorage.getItem("options"));
+            alert("Вы ошиблись!");
+            sessionStorage.setItem("try", 1);
+
+            if (userAnswer == 1) {
+              document.getElementById("a").innerHTML = "";
+              arrJSON[0] = -1;
+            }
+            if (userAnswer == 2) {
+              document.getElementById("b").innerHTML = "";
+              arrJSON[1] = -1;
+            }
+            if (userAnswer == 3) {
+              document.getElementById("c").innerHTML = "";
+              arrJSON[2] = -1;
+            }
+            if (userAnswer == 4) {
+              document.getElementById("d").innerHTML = "";
+              arrJSON[3] = -1;
+            }
+            sessionStorage.setItem("options", JSON.stringify(arrJSON));
+          } else {
+            alert("Упсс,вы проиграли...");
+            window.location.reload();
+          }
+        }, 1000);
+      }
+      function checkHits(n) {
+        let hits = JSON.parse(sessionStorage.getItem("usedHelp"));
+        let returnBool;
+        if (n == 1) {
+          if (hits[0] == 1) {
+            returnBool = false;
+          } else {
+            hits[0] = 1;
+            returnBool = true;
+          }
+        }
+        if (n == 2) {
+          if (hits[1] == 1) {
+            returnBool = false;
+          } else {
+            hits[1] = 1;
+            returnBool = true;
+          }
+        }
+        if (n == 3) {
+          if (hits[2] == 1) {
+            returnBool = false;
+          } else {
+            hits[2] = 1;
+            returnBool = true;
+          }
+        }
+        if (n == 4) {
+          if (hits[3] == 1) {
+            returnBool = false;
+          } else {
+            hits[3] = 1;
+            returnBool = true;
+          }
+        }
+        sessionStorage.setItem(`usedHelp`, JSON.stringify(hits));
+        return returnBool;
+      }
+    </script>
+  </body>
+</html>

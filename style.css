@@ -1,0 +1,151 @@
+.question {
+  background: url(Images/question_bg.gif) left top no-repeat;
+  width: 1000px;
+  height: 84px;
+  margin-top: 2px;
+  font: 19px Arial;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 7px;
+}
+.question p {
+  padding-top: 20px;
+  margin: 0 200px 0 200px;
+}
+.ans_1 a,
+.ans_2 a {
+  background: url(Images/anwser_bg.jpg) left top no-repeat;
+  width: 314px;
+  height: 84px;
+  padding: 11px 0 0 23px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+.ans_1,
+.ans_2 {
+  font: 18px Arial;
+  color: #fff;
+  margin: 12px 0 0 0px;
+  float: left;
+}
+.ans_2 {
+  margin: 12px 0 0 29px;
+  _margin: 12px 0 0 29px;
+}
+.top_ans {
+  background: url(Images/line.gif) left 26px no-repeat;
+  width: 852px;
+  width: 1000px;
+  padding-left: 148px;
+}
+.bot_ans {
+  background: url(Images/line.gif) left 26px no-repeat;
+  width: 852px;
+  width: 1000px;
+  padding-left: 148px;
+}
+.clear {
+  clear: both;
+  line-height: 1%;
+  margin-bottom: -1px;
+  height: 1px;
+  overflow: hidden;
+  font-size: 0px;
+}
+.question_list li {
+  line-height: 120%;
+  margin-bottom: 9px;
+  font: 16px Arial;
+  font-weight: normal;
+  color: rgb(225, 160, 46);
+}
+.fire {
+  color: #fff !important;
+  font-weight: bold !important;
+}
+.num {
+  width: 25px;
+  text-align: right;
+  display: block;
+}
+.money {
+  width: 110px;
+  margin: -19px 0 0 50px;
+  display: block;
+}
+.org_bg,
+#org_bg {
+  background: url(Images/surrentMoney.gif) left top no-repeat;
+  width: 173px;
+  height: 19px;
+  padding-top: 1px;
+}
+div [class^="icon_"] a {
+  width: 80px;
+  height: 60px;
+  margin-top: 6px;
+  display: inline-block;
+}
+.help {
+  display: inline-block;
+  margin-top: -10px;
+  text-align: center;
+}
+
+#help1 {
+  background: url(Images/fifty.png) no-repeat center center;
+}
+#help2 {
+  background: url(Images/people.png) no-repeat center center;
+}
+#help3 {
+  background: url(Images/wrongAnswer.png) no-repeat center center;
+}
+#help4 {
+  background: url(Images/friend.png) no-repeat center center;
+}
+.help_inactive {
+  opacity: 0.5;
+}
+body {
+  background: black;
+}
+.main {
+  background: url(Images/background_logo.jpg) center 200px no-repeat;
+  width: 1000px;
+  margin: 10px auto;
+  text-align: left;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.millioners {
+  position: absolute;
+  width: 160px;
+  height: 600px;
+  top: 125px;
+  left: 837px;
+  overflow: hidden;
+}
+ul {
+  list-style-type: none;
+}
+.org_bg .money {
+  color: #000;
+  font-weight: bold !important;
+}
+.org_bg .num {
+  color: #fff;
+}
+.dot {
+  background: url(/./images/dot.gif) 30px 2px no-repeat;
+}
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
