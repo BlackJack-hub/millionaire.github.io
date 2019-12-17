@@ -417,6 +417,22 @@
         return Math.round(rand);
       }
 
+      function sound(n) {
+        if(n==0){
+    var audio = new Audio(); // Создаём новый элемент Audio
+	 audio.src = 'wrong.mp3'; // Указываем путь к звуку "клика"
+  }
+	if(n==1) {
+    var audio = new Audio(); // Создаём новый элемент Audio
+	 audio.src = 'khsm_q1-5-correct-o.mp3'; // Указываем путь к звуку "клика"
+  }
+  if(n==15){
+    var audio = new Audio(); // Создаём новый элемент Audio
+	 audio.src = 'win.mp3'; // Указываем путь к звуку "клика"
+  }
+	 audio.autoplay = true; // Автоматически запускаем
+   return 0;
+}
       function checkAnswer(userAnswer) {
         setTimeout(function() {
           if (userAnswer == sessionStorage.getItem("correct")) {
@@ -425,6 +441,7 @@
                 sessionStorage.getItem("questionR"),
                 1,
               );
+              sound(1);
               console.log(
                 correctAnswer[sessionStorage.getItem("questionLevel")],
               );
@@ -442,7 +459,6 @@
                 1,
               );
               console.log(wrongAnswer[sessionStorage.getItem("questionLevel")]);
-
               onload1(Number(sessionStorage.getItem("questionN")) + 1);
 
               document.getElementsByTagName("li")[sum_pointer].className = "";
@@ -450,6 +466,7 @@
               document.getElementsByTagName("li")[sum_pointer].className =
                 "org_bg";
             } else {
+              sound(15);
               alert(
                 "Вау!!!Вы просто гений!Вы выиграли 1,000,000!!!!Поздравляем!",
               );
@@ -478,7 +495,8 @@
             }
             sessionStorage.setItem("options", JSON.stringify(arrJSON));
           } else {
-            alert("Упсс,вы проиграли...");
+            sound(0);
+            alert("Упсс,вы проиграли...Правильный ответ был: "+correctAnswer[sessionStorage.getItem("questionLevel")][sessionStorage.getItem("questionR")]);
             window.location.reload();
           }
         }, 1000);
