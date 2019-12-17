@@ -16,6 +16,10 @@
   padding-top: 20px;
   margin: 0 200px 0 200px;
 }
+.answer {
+  background: url(Images/anwser_hover_bg.jpg) left top no-repeat;
+  color: #000;
+}
 .ans_1 a:hover,
 .ans_2 a:hover {
   background: url(Images/anwser_hover_bg.jpg) left top no-repeat;
